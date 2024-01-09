@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/install/yahboomcar_msgs/include/**",
+        "/home/yahboom/yahboomcar_ros2_ws/software/library_ws/install/web_video_server/include/**",
+        "/home/yahboom/yahboomcar_ros2_ws/software/library_ws/install/teb_local_planner/include/**",
+        "/home/yahboom/yahboomcar_ros2_ws/software/library_ws/install/teb_msgs/include/**",
+        "/home/yahboom/yahboomcar_ros2_ws/software/library_ws/install/openslam_gmapping/include/**",
+        "/home/yahboom/yahboomcar_ros2_ws/software/library_ws/install/octomap_server/include/**",
+        "/home/yahboom/yahboomcar_ros2_ws/software/library_ws/install/costmap_converter/include/**",
+        "/home/yahboom/yahboomcar_ros2_ws/software/library_ws/install/costmap_converter_msgs/include/**",
+        "/opt/ros/foxy/include/**",
+        "/home/yahboom/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_slam/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

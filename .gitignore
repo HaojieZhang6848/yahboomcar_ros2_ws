@@ -1,0 +1,10 @@
+# 忽略所有build文件夹
+build/  
+# 忽略所有.ipynb_checkpoints文件夹
+.ipynb_checkpoints/
+
+yahboomcar_ws/install
+yahboomcar_ws/log
+
+software/library_ws/install
+software/library_ws/log

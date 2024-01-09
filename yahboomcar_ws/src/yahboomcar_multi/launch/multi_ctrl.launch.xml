@@ -1,0 +1,4 @@
+<launch>
+	<node  pkg="joy" exec="joy_node" output="screen"/>
+	<node  pkg="yahboomcar_multi" exec="yahboomcar_ctrl" output="screen"/>
+</launch>

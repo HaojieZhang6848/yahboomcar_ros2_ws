@@ -1,0 +1,61 @@
+<launch>
+	<arg name="robot_name" default="robot1"/>
+	
+    <node name="robot1_nav2_controller_server" pkg="nav2_controller" exec="controller_server" output="screen">
+		<param name="robot_base_frame" value="$(var robot_name)/base_footprint"/>
+		<param from="$(find-pkg-share yahboomcar_multi)/param/dwb_nav_params.yaml"/>
+		<param name="scan_topic" value="$(var robot_name)/scan"/>
+		<remap from="/tf_static" to="tf_static"/>
+		<remap from="/tf" to="tf"/>	
+		<remap from="/cmd_vel" to="/robot1/cmd_vel"/>
+		<remap from="/odom" to="/robot1/odom"/>		
+	</node>	
+	
+	<node name="robot1_nav2_planner_server" pkg="nav2_planner" exec="planner_server" output="screen">
+		<param name="robot_base_frame" value="$(var robot_name)/base_footprint"/>
+		<param from="$(find-pkg-share yahboomcar_multi)/param/dwb_nav_params.yaml"/>
+		<param name="scan_topic" value="$(var robot_name)/scan"/>
+		<remap from="/tf_static" to="tf_static"/>
+		<remap from="/tf" to="tf"/>		
+		<param name="global_frame_id" value="map" />		
+	</node>	
+	
+	<node name="robot1_nav2_recoveries_server" pkg="nav2_recoveries" exec="recoveries_server" output="screen">
+		<param name="robot_base_frame" value="$(var robot_name)/base_footprint"/>
+		<param from="$(find-pkg-share yahboomcar_multi)/param/dwb_nav_params.yaml"/>
+		<param name="global_frame" value="$(var robot_name)/odom"/>	
+		<remap from="/tf_static" to="tf_static"/>
+		<remap from="/tf" to="tf"/>		
+	</node>	
+	
+	
+
+	<node name="robot1_nav2_waypoint_follower" pkg="nav2_waypoint_follower" exec="waypoint_follower" output="screen">
+		<remap from="/tf_static" to="tf_static"/>
+		<param from="$(find-pkg-share yahboomcar_multi)/param/dwb_nav_params.yaml"/>
+		<remap from="/tf" to="tf"/>	
+				
+	</node>	
+	
+	
+	
+	<node name="bt_navigator" pkg="nav2_bt_navigator" exec="bt_navigator" output="screen">
+		<!--remap from="/tf_static" to="tf_static"/-->
+		<!--param name="robot_base_frame" value="$(var robot_name)/base_footprint"/-->
+		<param from="$(find-pkg-share yahboomcar_multi)/param/dwb_nav_params.yaml"/>
+		<!--param name="odom_topic" value="$(var robot_name)/odom"/>
+		<remap from="/tf" to="tf"/>	
+		<remap from="/goal_pose" to="/robot1/goal_pose"/-->		
+	</node>
+		
+	<node name="$(var robot_name)_lifecycle_nav_node" pkg="nav2_lifecycle_manager" exec="lifecycle_manager" output="screen">
+				<param name="autostart" value="true"/>
+				<param name="use_sim_time" value="false"/>
+				<param name="node_names" value="[robot1_nav2_waypoint_follower,robot1_nav2_recoveries_server,robot1_nav2_planner_server,robot1_nav2_controller_server]"/>
+	</node>
+	<node name="lifecycle_nav_node" pkg="nav2_lifecycle_manager" exec="lifecycle_manager" output="screen">
+				<param name="autostart" value="true"/>
+				<param name="use_sim_time" value="false"/>
+				<param name="node_names" value="[bt_navigator]"/>
+	</node>
+</launch>

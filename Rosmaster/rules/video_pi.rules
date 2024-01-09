@@ -1,0 +1,3 @@
+KERNEL=="video*", ATTR{index}=="0", ATTRS{idVendor}=="2bc5", ATTRS{idProduct}=="0501", MODE:="0777", SYMLINK+="camera_depth"
+KERNEL=="video*", ATTR{index}=="0", ATTRS{idVendor}=="0c45", ATTRS{idProduct}=="6340", MODE:="0777", SYMLINK+="camera_usb"
+KERNEL=="video*", ATTR{index}=="0", ATTRS{idVendor}=="038f", ATTRS{idProduct}=="6001", MODE:="0777", SYMLINK+="camera_usb"
