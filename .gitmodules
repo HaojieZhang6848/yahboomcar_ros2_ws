@@ -1,0 +1,3 @@
+[submodule "yahboomcar_ws/src/hj_nav"]
+	path = yahboomcar_ws/src/hj_nav
+	url = git@github.com:HaojieZhang6848/hj_nav.git
