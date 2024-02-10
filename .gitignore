@@ -8,3 +8,5 @@ yahboomcar_ws/log
 
 software/library_ws/install
 software/library_ws/log
+
+*.pyc
